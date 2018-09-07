@@ -1,0 +1,32 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block title %}Login{% endblock %}
+{% block fos_user_content %}
+{% if error %}
+    <div class="msg"><h1>{{ error.messageKey|trans(error.messageData, 'security') }}</h1></div>
+{% endif %}
+<link rel="stylesheet" href="{{ asset('bundles/rtfuser/css/style.css') }}" type="text/css" media="all" />  
+
+
+
+  <div class="container">
+  <div id="login-form">
+          <h3>Connecter</h3>
+
+    <fieldset>
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="username" required="required" />
+    <input type="password" id="password" name="_password" placeholder="password"  required="required" />
+    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+
+
+</form>
+</fieldset>
+    
+   </div> <!-- end login-form -->
+
+</div>   
+{% endblock fos_user_content %}

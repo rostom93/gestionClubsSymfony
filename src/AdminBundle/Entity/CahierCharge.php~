@@ -1,0 +1,99 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CahierCharge
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class CahierCharge
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     *
+     */
+    private $chargeAccepted;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     *
+     */
+    private $adminAccepted;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $titre;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $type;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="date")
+     */
+    private $dateEvent;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $objectif;
+
+    /**
+     * @var string
+     * @ORM\Column(type="text")
+     */
+    private $details;
+
+    /**
+     * @var string
+     * @ORM\Column(type="text")
+     */
+    private $program;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $listInvited;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $equipments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\President", inversedBy="CahierCharge" ,cascade="persist")
+     * @ORM\JoinColumn(name="president_id", referencedColumnName="id")
+     * */
+    private $president;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Club", inversedBy="CahierCharge" ,cascade="persist")
+     * @ORM\JoinColumn(name="club_id", referencedColumnName="id")
+     * */
+    private $club;
+
+}
+

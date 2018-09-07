@@ -1,0 +1,141 @@
+{% extends 'AdminBundle::layout1.html.twig' %}
+{% block title %} Liste des cahiers{% endblock %}
+{% block body %}
+    <div class="content">
+        <div class="header">
+            <div class="stats">
+                <p class="stat"><span class="label label-info">5</span> Tickets</p>
+                <p class="stat"><span class="label label-success">27</span> Tasks</p>
+                <p class="stat"><span class="label label-danger">15</span> Overdue</p>
+            </div>
+
+            <h1 class="page-title">Dashboard</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Dashboard</li>
+            </ul>
+
+        </div>
+        <div class="main-content">
+
+            <div class="row">
+                {{ message }}
+                <div class="col-sm-12 col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading no-collapse">La liste des clubs<span
+                                    class="label label-warning">+10</span></div>
+
+                        <table class="table table-bordered table-striped table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Type</th>
+                                <th>Objectif</th>
+                                <th>Details</th>
+                                <th>Liste invités</th>
+                                <th>Programme</th>
+                                <th>Equipements</th>
+                                <th>Date</th>
+                                <th>Club</th>
+                                <th>Confirmé</th>
+                                {% if (is_granted('ROLE_SUPER_ADMIN') or is_granted('ROLE_ADMIN') ) %}
+                                    <th>Actions</th>
+                                {% endif %}
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for cahier in cahiers %}
+                                {% if (is_granted("ROLE_SUPER_ADMIN")) %}
+                                    {% if (cahier.chargeAccepted) %}
+                                        <tr>
+                                        <td>{{ cahier.titre }}</td>
+                                        <td>{{ cahier.type }}</td>
+                                        <td>{{ cahier.objectif }}</td>
+                                        <td>{{ cahier.details }}</td>
+                                        <td>{{ cahier.listInvited }}</td>
+                                        <td>{{ cahier.program }}</td>
+                                        <td>{{ cahier.equipments }}</td>
+                                        <td>{{ cahier.dateEvent | date }}</td>
+                                        <td>{{ cahier.club }}</td>
+                                        <td>{{ cahier.chargeAccepted ? 'Oui':'Non' }}</td>
+                                        <td>
+                                            {% if (not(cahier.adminAccepted)) %}
+                                                <a href="{{ path('admin_valid_cahier',{'id':cahier.id}) }}"><i
+                                                            class="fa fa-check"></i></a>
+                                            {% endif %}
+                                            {% if (cahier.adminAccepted) %}
+                                                <a href="{{ path('admin_delete_cahier',{'id':cahier.id}) }}"
+                                                   role="button"
+                                                   data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                                            {% endif %}
+                                        </td>
+                                    {% endif %}
+
+                            {% else %}
+                                <tr>
+                                    <td>{{ cahier.titre }}</td>
+                                    <td>{{ cahier.type }}</td>
+                                    <td>{{ cahier.objectif }}</td>
+                                    <td>{{ cahier.details }}</td>
+                                    <td>{{ cahier.listInvited }}</td>
+                                    <td>{{ cahier.program }}</td>
+                                    <td>{{ cahier.equipments }}</td>
+                                    <td>{{ cahier.dateEvent | date }}</td>
+                                    <td>{{ cahier.club }}</td>
+                                    <td>{{ cahier.adminAccepted ? 'Oui':'Non' }}</td>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <td>
+                                            {% if (not(cahier.chargeAccepted)) %}
+                                                <a href="{{ path('valid_cahier',{'id':cahier.id}) }}"><i
+                                                            class="fa fa-check"></i></a>
+                                            {% endif %}
+                                            {% if (cahier.chargeAccepted) %}
+                                                <a href="{{ path('delete_cahier',{'id':cahier.id}) }}" role="button"
+                                                   data-toggle="modal"><i class="fa fa-trash-o"></i></a>
+                                            {% endif %}
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Confirmation</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p class="error-text"><i class="fa fa-warning modal-icon"></i>Vous étes en train de
+                                supprimer un cahier des charges . Vous étes sure !!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    <script src="{{ asset('bundles/lib/bootstrap/js/bootstrap.js') }}"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function () {
+            $('.demo-cancel-click').click(function () {
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

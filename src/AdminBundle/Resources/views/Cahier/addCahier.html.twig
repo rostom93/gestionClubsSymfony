@@ -1,0 +1,88 @@
+{% extends 'AdminBundle::layout1.html.twig' %}
+{% block title %} Ajouter Cahier des charges{% endblock %}
+{% block body %}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Creer Cahier des charges</h1>
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin_accueil') }}">Accueil</a></li>
+                <li><a href="{{ path('add_cahier') }}">Créer Cahier des charges</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-8">
+                    <br>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane active in" id="home">
+                            {{ form_start(formCahier, {'attr' : {'id':'formID'} }) }}
+                                <div class="form-group">
+                                    {{ form_label (formCahier.titre) }}
+                                    {{ form_widget (formCahier.titre) }}
+                                    {{ form_errors (formCahier.titre) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCahier.type) }}
+                                    {{ form_widget (formCahier.type) }}
+                                    {{ form_errors (formCahier.type) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCahier.objectif) }}
+                                    {{ form_widget (formCahier.objectif) }}
+                                    {{ form_errors (formCahier.objectif) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCahier.details) }}
+                                    {{ form_widget (formCahier.details) }}
+                                    {{ form_errors (formCahier.details) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCahier.listInvited) }}
+                                    {{ form_widget (formCahier.listInvited) }}
+                                    {{ form_errors (formCahier.listInvited) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCahier.program) }}
+                                    {{ form_widget (formCahier.program) }}
+                                    {{ form_errors (formCahier.program) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCahier.equipments) }}
+                                    {{ form_widget (formCahier.equipments) }}
+                                    {{ form_errors (formCahier.equipments) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCahier.dateEvent) }}
+                                    {{ form_widget (formCahier.dateEvent) }}
+                                    {{ form_errors (formCahier.dateEvent) }}
+                                </div>
+
+                                <div class="form-group">
+                                    {{ form_label (formCahier.club) }}
+                                    {{ form_widget (formCahier.club) }}
+                                    {{ form_errors (formCahier.club) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCahier.president) }}
+                                    {{ form_widget (formCahier.president) }}
+                                    {{ form_errors (formCahier.president) }}
+                                </div>
+                            <div class="btn-toolbar list-toolbar">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Valider </button>
+                                <a href="{{ path('add_cahier') }}"  class="btn btn-danger">Annuler</a>
+                            </div>
+                            {{ form_end(formCahier) }}
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+

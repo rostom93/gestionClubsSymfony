@@ -1,0 +1,90 @@
+   
+.myactive > a, .myactive > a:focus, .myactive > a:hover{
+        background-color: #080808;
+        color: #fff;
+       
+        
+    }
+    
+  .arrow {
+    float: right;
+}
+
+.fa.arrow:before {
+    content: "\f104";
+}
+
+ a.active > .fa.arrow:before {
+    content: "\f107";
+}  
+
+
+.profile_picture{
+    margin: 0 0 15px 0;
+    position: relative;
+    right: -120px;
+    top: 0;
+}
+
+.mytable td{
+    padding: 0 15px 15px 0;
+}
+.pic{
+    position:absolute;                                                                                           
+    right: 155px
+}
+.pre{
+    position: relative;
+    bottom: 0px;
+    right: -750px;
+}
+.lanEn{
+    position: relative;
+    left: 135px;
+    top: 2px
+}
+.lanFR{
+    position: relative;
+    left: 130px;
+    top: 2px
+}
+.lanen{
+    position: relative;
+    left: 45px;
+    top: 2px
+}
+.lanfr{
+    position: relative;
+    left: 40px;
+    top: 2px
+}
+
+.dis{
+    display: none;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+.image_gallerie2{
+    margin: 0 0 15px 0;
+    position: relative;
+    right: 0px;
+    top: -31px;
+}
+.image_gallerie1{
+    position: relative;
+    bottom: -100px;
+}
+
+.discri{
+   position: absolute;
+   top: 282px;
+}
+
+
+.btnn{
+    position: absolute;
+    right: 949px;
+}

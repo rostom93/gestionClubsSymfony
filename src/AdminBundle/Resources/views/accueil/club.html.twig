@@ -1,0 +1,56 @@
+{% extends 'AdminBundle::layout1.html.twig' %}
+{% block title %} Liste des clubs{% endblock %}
+{% block body %}
+    <div class="content">
+        <div class="header">
+            <div class="stats">
+                <p class="stat"><span class="label label-info">5</span> Tickets</p>
+                <p class="stat"><span class="label label-success">27</span> Tasks</p>
+                <p class="stat"><span class="label label-danger">15</span> Overdue</p>
+            </div>
+
+            <h1 class="page-title">Dashboard</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Dashboard</li>
+            </ul>
+
+        </div>
+        <div class="main-content">
+            {{ message }}
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading no-collapse">La liste des clubs<span
+                                    class="label label-warning">+10</span></div>
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Objectif</th>
+                                <th>Telephone</th>
+                                <th>President</th>
+                                <th>Responsable</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for club in clubs %}
+                                <tr>
+                                    <td>{{ club.name }}</td>
+                                    <td>{{ club.objectif }}</td>
+                                    <td>{{ club.telClub }}</td>
+                                    <td>{{ club.president }}</td>
+                                    <td>{{ club.responsable }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

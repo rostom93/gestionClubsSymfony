@@ -1,0 +1,58 @@
+{% extends 'AdminBundle::layout1.html.twig' %}
+{% block title %} Ajouter Club{% endblock %}
+{% block body %}
+    <div class="content">
+        <div class="header">
+            <h1 class="page-title">Créer un club</h1>
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin_accueil') }}">Accueil</a></li>
+                <li><a href="{{ path('add_club') }}">Créer un club</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-8">
+                    <br>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane active in" id="home">
+
+                            {{ form_start(formCLub, {'attr' : {'id':'formID'} }) }}
+                                <div class="form-group">
+                                    {{ form_label (formCLub.name) }}
+                                    {{ form_widget (formCLub.name) }}
+                                    {{ form_errors (formCLub.name) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCLub.objectif) }}
+                                    {{ form_widget (formCLub.objectif) }}
+                                    {{ form_errors (formCLub.objectif) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCLub.telClub) }}
+                                    {{ form_widget (formCLub.telClub) }}
+                                    {{ form_errors (formCLub.telClub) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCLub.responsable) }}
+                                    {{ form_widget (formCLub.responsable) }}
+                                    {{ form_errors (formCLub.responsable) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label (formCLub.president) }}
+                                    {{ form_widget (formCLub.president) }}
+                                    {{ form_errors (formCLub.president) }}
+                                </div>
+                            <div class="btn-toolbar list-toolbar">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Valider </button>
+                                <a href="{{ path('add_club') }}"  class="btn btn-danger">Annuler</a>
+                            </div>
+                            {{ form_end(formCLub) }}
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

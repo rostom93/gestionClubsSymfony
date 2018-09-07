@@ -1,0 +1,55 @@
+<?php
+
+
+namespace AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Club
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+
+class Club
+{
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\President", inversedBy="CahierCharge" ,cascade="persist")
+     * @ORM\JoinColumn(name="president_id", referencedColumnName="id")
+     * */
+    private $president;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $telClub;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $objectif;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $responsable;
+
+
+}
